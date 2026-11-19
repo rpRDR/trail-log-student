@@ -29,11 +29,7 @@ class EditTrailActivity : AppCompatActivity() {
                 Snackbar.make(b.root, R.string.invalid_fields, Snackbar.LENGTH_LONG).show(); return@setOnClickListener
             }
             // M4 practical: an application-specific validation may reject otherwise valid input.
-            if (elevation > 500) {
-                Log.e("TrailLogSave", "Save rejected during elevation validation: elevationGainM=$elevation")
-                Snackbar.make(b.root, R.string.invalid_fields, Snackbar.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
+
             val value = (original ?: Trail(UUID.randomUUID().toString(), name, "", distance, elevation)).copy(
                 name = name, region = b.regionInput.text.toString().trim(), distanceKm = distance,
                 elevationGainM = elevation, notes = b.notesInput.text.toString(), updatedAt = System.currentTimeMillis())
